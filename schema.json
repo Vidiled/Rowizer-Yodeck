@@ -1,5 +1,11 @@
 {
   "fields": [
+    "background_start",
+    "background_end",
+    "panel_background",
+    "text_color",
+    "accent_color",
+    "error_color",
     "portal",
     "token",
     "branch",
@@ -9,6 +15,36 @@
     "date"
   ],
   "schema": {
+    "background_start": {
+      "title": "Background gradient start",
+      "type": "SpectrumColorPicker",
+      "help": "Start color for the background gradient."
+    },
+    "background_end": {
+      "title": "Background gradient end",
+      "type": "SpectrumColorPicker",
+      "help": "End color for the background gradient."
+    },
+    "panel_background": {
+      "title": "Panel background",
+      "type": "SpectrumColorPicker",
+      "help": "Background color for panels (can include alpha)."
+    },
+    "text_color": {
+      "title": "Text color",
+      "type": "SpectrumColorPicker",
+      "help": "Primary text color used across the widget."
+    },
+    "accent_color": {
+      "title": "Accent color",
+      "type": "SpectrumColorPicker",
+      "help": "Accent color used for highlights (new changes, accents)."
+    },
+    "error_color": {
+      "title": "Error banner color",
+      "type": "SpectrumColorPicker",
+      "help": "Background color for the on-screen error banner."
+    },
     "portal": {
       "title": "Portal ID",
       "type": "Text",

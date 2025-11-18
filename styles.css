@@ -1,11 +1,36 @@
-body {
-    font-family: Arial, sans-serif;
-    font-weight: bold;
-    background: linear-gradient(45deg, #49a09d, #5f2c82);
-    height: calc(100% - 10px);
+:root{
+    /* Color tokens — can be set by Yodeck via injected CSS or by editing the app's UI config */
+    --bg-gradient-start: #49a09d;
+    --bg-gradient-end: #5f2c82;
+    --bg-gradient-angle: 45deg;
+     /* Use a darker translucent panel over the colorful background to ensure
+         high contrast for text and UI elements. These defaults aim for
+         accessible contrast on typical displays. */
+     --panel-bg: rgba(0,0,0,0.60);
+     --text-color: #ffffff;
+     --accent-color: #ffbe2e; /* bright, warm accent */
+     --activity-bg: rgba(255,230,0,0.12); /* yellow highlight for activities */
+     --error-bg: #cc2b2b;
+    --font-family: Inter, Arial, sans-serif;
+    --base-padding: 8px;
+    --border-radius: 8px;
 }
-html{
-    height: 100%
+
+html{ height: 100%; }
+
+body {
+    font-family: var(--font-family);
+    font-weight: 600;
+    background: linear-gradient(var(--bg-gradient-angle), var(--bg-gradient-start), var(--bg-gradient-end));
+    color: var(--text-color);
+    height: calc(100% - 10px);
+    margin: 0;
+    -webkit-font-smoothing:antialiased;
+}
+
+/* Improve contrast for main text and interactive elements */
+#title, #clock, .year-row, .schedule-content, .year-header, .padding-standard, #absences-container, #outofoffice-container {
+    color: var(--text-color);
 }
 
 .flex {
@@ -26,7 +51,9 @@ html{
 }
 
 .content-background{
-    background-color: rgba(255,255,255,.5)
+    background-color: var(--panel-bg);
+    border-radius: var(--border-radius);
+    padding: calc(var(--base-padding) * 0.5);
 }
 
 /* Roosterwijzigingen */
@@ -117,21 +144,43 @@ html{
 }
 
 .appointment, .timeslot-header{
-    padding: 1px 4px 1px 4px;
+    padding: 4px 8px;
+    border-radius: 6px;
 }
 .appointment{
     grid-column-start: var(--start-hour);
     grid-column-end: calc(var(--end-hour) + 1);
-    background-color: rgba(255,255,255,.5);
+    background-color: var(--panel-bg);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.08);
 }
 
 div.activity{
-    background-color: rgb(0,255,0,0.2);
+    background-color: var(--activity-bg);
+    color: #064;
 }
-div.appointment.new{
-
+.appointment.new{
     background-clip: padding-box;
-    box-shadow: inset 0 0 10px #ff0000;
+    box-shadow: inset 0 0 10px var(--accent-color);
+    border: 1px solid rgba(0,0,0,0.06);
+}
+
+/* Ensure appointment text and headers have clear contrast */
+.appointment, .timeslot-header, .year-row, .schedule-content, .year-header, .padding-standard {
+    color: var(--text-color);
+}
+
+.absence, #absences-container > div, #outofoffice-inner-container, .outofoffice {
+    color: var(--text-color);
+}
+
+/* Slightly strengthen panel separation */
+.content-background{
+    box-shadow: 0 6px 18px rgba(0,0,0,0.35);
+}
+
+/* Make interactive elements clearer */
+button, a {
+    color: var(--text-color);
 }
 
 /**afwezigen**/
@@ -173,24 +222,24 @@ div.appointment.new{
 /* On-screen error banner */
 #widget-error{
     position: fixed;
-    top: 8px;
+    top: 12px;
     left: 50%;
     transform: translateX(-50%);
-    background-color: rgba(200,30,30,0.95);
+    background-color: var(--error-bg);
     color: #fff;
-    padding: 8px 12px;
-    border-radius: 6px;
+    padding: 10px 14px;
+    border-radius: calc(var(--border-radius) / 1.2);
     z-index: 9999;
     display: flex;
     align-items: center;
-    gap: 8px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+    gap: 12px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.35);
 }
 #widget-error button{
     background: transparent;
     border: none;
     color: #fff;
-    font-size: 14px;
+    font-size: 16px;
     cursor: pointer;
 }
 #widget-error button:focus{ outline: none }

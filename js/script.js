@@ -63,6 +63,27 @@ function _getFromConfigOrParams(key, config, params){
 function initApp(config){
     console.log("Initializing app with config:", config)
 
+    // Apply style-related config (colors) early so UI renders with selected theme.
+    try{
+        const paramsPreview = new URLSearchParams(window.location.search);
+        const styleMap = {
+            background_start: '--bg-gradient-start',
+            background_end: '--bg-gradient-end',
+            panel_background: '--panel-bg',
+            text_color: '--text-color',
+            accent_color: '--accent-color',
+            error_color: '--error-bg'
+        };
+        Object.keys(styleMap).forEach(key => {
+            const val = _getFromConfigOrParams(key, config, paramsPreview);
+            if(val !== null && val !== undefined){
+                try{ document.documentElement.style.setProperty(styleMap[key], val); }catch(e){ /* ignore */ }
+            }
+        });
+    }catch(e){
+        console.warn('Applying style config failed', e);
+    }
+
     const params = new URLSearchParams(window.location.search);
 
     // Build Zermelo API instance from either config or URL params
