@@ -170,4 +170,30 @@ div.appointment.new{
     display: inline;
 }
 
+/* On-screen error banner */
+#widget-error{
+    position: fixed;
+    top: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(200,30,30,0.95);
+    color: #fff;
+    padding: 8px 12px;
+    border-radius: 6px;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+}
+#widget-error button{
+    background: transparent;
+    border: none;
+    color: #fff;
+    font-size: 14px;
+    cursor: pointer;
+}
+#widget-error button:focus{ outline: none }
+
+
 

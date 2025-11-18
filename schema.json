@@ -1,0 +1,48 @@
+{
+  "fields": [
+    "portal",
+    "token",
+    "branch",
+    "departmentsIgnore",
+    "mergeAppointments",
+    "external",
+    "date"
+  ],
+  "schema": {
+    "portal": {
+      "title": "Portal ID",
+      "type": "Text",
+      "help": "The zportal ID (so the part before .zportal.nl)"
+    },
+    "token": {
+      "title": "API Token",
+      "type": "Password",
+      "help": "Zermelo API token. Mark as secret in Yodeck if possible."
+    },
+    "branch": {
+      "title": "Vestiging (branch code)",
+      "type": "Text",
+      "help": "The branch/vestigings code found in Portal inrichting -> Vestigingen."
+    },
+    "departmentsIgnore": {
+      "title": "[Optional] Ignore departments (comma separated)",
+      "type": "Text",
+      "help": "Some departments should not be taken into consideration while determining if a whole education or yearOfEducation is present in an appointment."
+    },
+    "mergeAppointments": {
+      "title": "[Optional] Merge Appointments",
+      "type": "Checkbox",
+      "help": "If checked, merge multiple hour spans into single entries (default: true)."
+    },
+    "external": {
+      "title": "[Optional] External location name",
+      "type": "Text",
+      "help": "If you add the location with this name to an appointment, Rowizer will show the attending teachers just below the absent ones. This way, students will quickly see that a certain teacher is not available at school."
+    },
+    "date": {
+      "title": "[Optional] Test Date",
+      "type": "Date",
+      "help": "Use to preview a specific date."
+    }
+  }
+}
