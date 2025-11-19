@@ -203,6 +203,7 @@ function initApp(config){
 // Yodeck will call init_widget(config) with a JS object containing the configuration
 // See Yodeck docs: the player calls this function after loading the app
 window.init_widget = function(config){
+    console.log('init_widget called with config:', config);
     try{
         initApp(config);
     }catch(e){

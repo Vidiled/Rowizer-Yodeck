@@ -77,7 +77,7 @@
     },
     "date": {
       "title": "[Optional] Test Date",
-      "type": "Date",
+      "type": "Text",
       "help": "Use to preview a specific date."
     }
   }
