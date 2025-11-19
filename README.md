@@ -1,3 +1,5 @@
+ABANDONED due to problems with Yodeck's handling of Javascript in their HTML apps and poor support overall.
+
 # Rowizer — class schedule changes viewer (fork)
 
 > Fork of the original Rowizer by Xinne van der Oord (Vlietland College). This fork adds Yodeck HTML App support and a small set of deployment helpers. See [deploy-to-yodeck](deploy-to-yodeck.md) [installeer-op-yodeck.md](deploy-to-yodeck.md) for instructions.
